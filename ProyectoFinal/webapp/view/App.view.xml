@@ -1,0 +1,8 @@
+<mvc:View controllerName="ProyectoFinal.ProyectoFinal.controller.App"
+xmlns:mvc="sap.ui.core.mvc"
+xmlns="sap.m"
+displayBlock="true">
+	<SplitApp id="app">
+    
+    </SplitApp>
+</mvc:View>

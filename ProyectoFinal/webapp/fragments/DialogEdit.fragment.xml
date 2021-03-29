@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" >
+
+    <Dialog id="idDialogEdit" title="{i18n>EditForm}">
+       	<f:SimpleForm>
+			<f:content>
+                <Label text="{i18n>Product}" />
+                <Input value="{ProductSelectIdModel>/ProductName}"/>
+
+                <Label text="{i18n>Description}" />
+                <Input value="{CategoryModel>/Description}"/>
+
+                <Label text="{i18n>Supplier}" />
+                <Input value="{SupplierModel>/CompanyName}" />
+                
+			</f:content>
+		</f:SimpleForm>
+        <Button text="{i18n>Accept}" width="50%" press="onCloseDialog" type="Accept" />
+        <Button text="{i18n>Close}" width="50%" press="onCloseDialog" type="Reject" />
+    </Dialog>
+
+</core:FragmentDefinition>

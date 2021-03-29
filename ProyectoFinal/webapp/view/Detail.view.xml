@@ -1,0 +1,70 @@
+<mvc:View controllerName="ProyectoFinal.ProyectoFinal.controller.Detail"
+xmlns:mvc="sap.ui.core.mvc"
+xmlns="sap.m"
+xmlns:f="sap.ui.layout.form"
+
+displayBlock="true">
+    <Page id="page" title="{i18n>detailTitle}">
+        <content>
+            <ObjectHeader
+                title="{ProductSelectIdModel>/ProductName}"
+                number="{
+                    parts:[{path:'ProductSelectIdModel>/UnitPrice'}, {path:'CurrencyCode'}],
+                    type: 'sap.ui.model.type.Currency',
+                    formatOptions: {showMeasure: true}
+                    }"
+                numberUnit="{i18n>USD}"
+                class="sapUiResponsivePadding--header">
+                <statuses>
+                    <ObjectStatus
+                        id="isStockStatus"
+                        text="{ProductSelectIdModel>/UnitsInStock}"/>
+                </statuses>
+                <ObjectAttribute text="{CategoryModel>/CategoryName}"/>
+            </ObjectHeader>
+            <IconTabBar
+                id="idDetailTabBar"
+                class="sapUiResponsiveContentPadding"
+                select="onSelect">
+                <items>
+                    <IconTabFilter
+                        text="{i18n>GeneralInformation}"
+                        key="info">
+		                <f:SimpleForm editable="false">
+			            <f:content>
+                            <Label text="{i18n>Product}" />
+                            <Text text="{ProductSelectIdModel>/ProductName}"/>
+                            <Label text="{i18n>Description}" />
+                            <Text text="{CategoryModel>/Description}"/>
+                        </f:content>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+
+                    <IconTabFilter
+                        text="{i18n>Supplier}"
+                        key="supplier">
+                        <f:SimpleForm editable="false">
+                            <f:content>
+                                <Label text="{i18n>Supplier}" />
+                                <Text text="{SupplierModel>/CompanyName}" />
+                                <Label text="{i18n>SupplierContact}" />
+                                <Text text="{SupplierModel>/ContactName}" />
+                                <Label text="{i18n>SupplierAddress}" />
+                                <Text text="{SupplierModel>/Address}" />
+                            </f:content>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        
+        </content>
+        <footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button id="idEditButton" press="onEditDialog" type="Emphasized" text="{i18n>Edit}" />
+                <Button id="idDeleteButton" press="onDelete" type="Transparent" text="{i18n>Delete}"/>
+                <Button id="idCopyButton" press="onCopy" type="Transparent" text="{i18n>Copy}" />
+			</Toolbar>
+		</footer>
+    </Page>
+</mvc:View>

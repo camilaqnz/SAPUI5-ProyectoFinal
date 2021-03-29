@@ -1,0 +1,37 @@
+<mvc:View controllerName="ProyectoFinal.ProyectoFinal.controller.Master"
+xmlns:mvc="sap.ui.core.mvc"
+xmlns="sap.m"
+
+displayBlock="true">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <List
+                id="idProductList"
+                mode="SingleSelectMaster"
+                items="{ProductsModel>/value}"
+                selectionChange="onListItemPress">
+
+                <Label text="{i18n>Products}"/>
+
+		    <headerToolbar>
+			    <OverflowToolbar>
+                    <content>
+                        <SearchField
+                            width="85%"
+                            class="sapUiSmallMargin"
+                            placeholder="{i18n>search}"
+                            liveChange="onSearch"
+                            value="{ProductsModel>/value/ProductName}"/>
+                    </content>
+			    </OverflowToolbar>
+		    </headerToolbar>
+		        <StandardListItem
+                    title="{ProductsModel>ProductName}"
+                    description="{ProductsModel>ProductID}"
+                    press="onListItemPress"
+                    info="{ProductsModel>UnitPrice}"
+                    type="Active"/>
+        	</List>
+        </content>
+    </Page>
+</mvc:View>
