@@ -4,10 +4,12 @@ sap.ui.define([
         "sap/ui/model/json/JSONModel",
         "ProyectoFinal/ProyectoFinal/util/Constants",
         "ProyectoFinal/ProyectoFinal/util/Formatter",
-        "sap/ui/core/Fragment"
+        "sap/ui/core/Fragment",
+        'sap/m/MessageToast',
+        "sap/m/MessageBox",
         ],
         
-	function (Controller, Services, JSONModel, Constants, Formatter, Fragment) {
+	function (Controller, Services, JSONModel, Constants, Formatter, Fragment, MessageToast, MessageBox) {
         "use strict";
         
 		return Controller.extend("ProyectoFinal.ProyectoFinal.controller.Detail", {
@@ -40,6 +42,21 @@ sap.ui.define([
 
             onCloseDialog: function(){
                 this.byId(Constants.ids.FRAGMENTS.dialogEdit).close();
+            },
+
+            onCopyInfo: function(){
+                let sMessage = (Constants.TEXT.message);
+                MessageToast.show(sMessage);
+            },
+
+            onDeleteInfo: function(evt){ //Se que era con Bundle para que interprete que idioma es, pero no recuerdo la funcion
+                MessageBox.warning(Constants.TEXT.delete, {
+				actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+				emphasizedAction: MessageBox.Action.OK,
+				onClose: function (sAction) {
+                    MessageToast.show(Constants.TEXT.deleted + sAction);
+                    }
+                })
             }
 		});
 	});

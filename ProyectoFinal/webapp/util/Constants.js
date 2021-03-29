@@ -46,8 +46,10 @@ sap.ui.define([], function(){
             oModelSupplier: "SupplierModel"
         },
 
-        formatter: {
-
+        TEXT:{
+            message: "Copiado en portapapeles",
+            delete: "¿Desea borrar esta información?",
+            deleted: "Borrado"
         }
     };
 }, true);

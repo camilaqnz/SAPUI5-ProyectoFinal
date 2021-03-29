@@ -62,8 +62,8 @@ displayBlock="true">
 			<Toolbar>
 				<ToolbarSpacer/>
 				<Button id="idEditButton" press="onEditDialog" type="Emphasized" text="{i18n>Edit}" />
-                <Button id="idDeleteButton" press="onDelete" type="Transparent" text="{i18n>Delete}"/>
-                <Button id="idCopyButton" press="onCopy" type="Transparent" text="{i18n>Copy}" />
+                <Button id="idDeleteButton" press="onDeleteInfo" type="Transparent" text="{i18n>Delete}"/>
+                <Button id="idCopyButton" press="onCopyInfo" type="Transparent" text="{i18n>Copy}" />
 			</Toolbar>
 		</footer>
     </Page>

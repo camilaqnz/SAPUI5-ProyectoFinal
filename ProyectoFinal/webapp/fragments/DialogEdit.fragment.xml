@@ -11,7 +11,13 @@
 
                 <Label text="{i18n>Supplier}" />
                 <Input value="{SupplierModel>/CompanyName}" />
-                
+
+                <Label text="{i18n>SupplierContact}" />
+                <Input value="{SupplierModel>/ContactName}" />
+
+                <Label text="{i18n>SupplierAddress}" />
+                <Input value="{SupplierModel>/Address}" />
+
 			</f:content>
 		</f:SimpleForm>
         <Button text="{i18n>Accept}" width="50%" press="onCloseDialog" type="Accept" />
