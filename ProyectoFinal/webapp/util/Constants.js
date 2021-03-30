@@ -26,7 +26,9 @@ sap.ui.define([], function(){
         ids: {
             idProductList:"idProductList",
             FRAGMENTS:{
-                dialogEdit: "idDialogEdit"
+                dialogEdit: "idDialogEdit",
+                listProducts: "idProductList",
+                fragmentList:"idFragmentList"
             }
         },
 
@@ -34,7 +36,9 @@ sap.ui.define([], function(){
             main: "RouteMaster",
             detail: "RouteDetail",
             FRAGMENTS: {
-               dialogEdit: "ProyectoFinal.ProyectoFinal.fragments.DialogEdit"
+               dialogEdit: "ProyectoFinal.ProyectoFinal.fragments.EditDialog",
+               filterDialog: "ProyectoFinal.ProyectoFinal.fragments.FilterDialog",
+               sortDialog: "ProyectoFinal.ProyectoFinal.fragments.SortDialog"
             }
         },
 
@@ -43,14 +47,22 @@ sap.ui.define([], function(){
             oSelectedProduct: "SelectProductModel",
             oProductSelectId: "ProductSelectIdModel",
             oModelCategory: "CategoryModel",
-            oModelSupplier: "SupplierModel"
+            oModelSupplier: "SupplierModel",
+            oModelLength: "LenghtModel"
         },
 
         TEXT:{
             message: "Copiado en portapapeles",
             delete: "¿Desea borrar esta información?",
             deleted: "Borrado",
-            usd: "USD"
+            usd: "USD",
+            productName: "Nombre producto",
+            productID: "ID Producto",
+            unitPrice: "Precio Unitario"
+        },
+
+        PROPERTIES:{
+            value:"/value"
         }
     };
 }, true);

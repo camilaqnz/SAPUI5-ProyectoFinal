@@ -6,7 +6,7 @@ sap.ui.define([
 ], function(Controller, Constants){    
     return {
         formatPrice: function (iValor) {
-            iValor = parseInt(iValor) + Constants.TEXT.usd;
+            return iValor = parseInt(iValor);
             },
             
         formatStock: function(nUnit) {

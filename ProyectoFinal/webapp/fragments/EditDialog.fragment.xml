@@ -20,8 +20,8 @@
 
 			</f:content>
 		</f:SimpleForm>
-        <Button text="{i18n>Accept}" width="50%" press="onCloseDialog" type="Accept" />
-        <Button text="{i18n>Close}" width="50%" press="onCloseDialog" type="Reject" />
+        <Button text="{i18n>Accept}" width="45%" press="onCloseDialog" type="Accept" class="sapUiSmallMarginBottom" />
+        <Button text="{i18n>Close}" width="45%" press="onCloseDialog" type="Reject" class="sapUiSmallMarginBottom"/>
     </Dialog>
 
 </core:FragmentDefinition>

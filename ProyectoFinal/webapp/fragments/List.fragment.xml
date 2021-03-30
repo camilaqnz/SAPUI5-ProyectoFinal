@@ -1,0 +1,37 @@
+<core:FragmentDefinition
+xmlns="sap.m"
+xmlns:core="sap.ui.core">
+
+    <List
+        id="idProductList"
+        mode="SingleSelectMaster"
+        items="{ProductsModel>/value}"
+        selectionChange="onListItemPress">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <SearchField
+                        width="50%"
+                        class="sapUiSmallMargin"
+                        placeholder="{i18n>search}"
+                        liveChange="onSearch"
+                        value="{ProductsModel>/value/ProductName}"/>
+
+                    <Button tooltip="Ordenar" icon="sap-icon://sort" press="onSort" />
+                    <Button tooltip="Filtrar" icon="sap-icon://filter" press="onFilter" />
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <items>
+            <ObjectListItem press="onListItemPress"
+                title="{ProductsModel>ProductName}"
+                intro="ID {ProductsModel>ProductID}"
+                number="{
+                    path: 'ProductsModel>UnitPrice', formatter: '.Formatter.formatPrice'
+                }"
+                numberUnit="{i18n>USD}"
+                type="Active"/>
+        </items>
+    </List>
+
+</core:FragmentDefinition>
