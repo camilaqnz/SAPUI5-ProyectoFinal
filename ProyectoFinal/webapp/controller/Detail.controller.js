@@ -13,8 +13,8 @@ sap.ui.define([
         "use strict";
         
 		return Controller.extend("ProyectoFinal.ProyectoFinal.controller.Detail", {
+            Formatter: Formatter,
             onInit: function () {
-                Formatter: Formatter;
                 let oModelProducts = this.getOwnerComponent().getModel(Constants.MODEL.oProductSelectId);
            },
             
@@ -49,7 +49,8 @@ sap.ui.define([
                 MessageToast.show(sMessage);
             },
 
-            onDeleteInfo: function(evt){ //Se que era con Bundle para que interprete que idioma es, pero no recuerdo la funcion
+            onDeleteInfo: function(evt){
+                //Se que era con Bundle para que interprete que idioma es, pero no recuerdo la funcion
                 MessageBox.warning(Constants.TEXT.delete, {
 				actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
 				emphasizedAction: MessageBox.Action.OK,

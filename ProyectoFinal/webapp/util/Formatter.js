@@ -1,26 +1,34 @@
 jQuery.sap.require("sap.ui.core.format.DateFormat");
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/core/format/NumberFormat"
-], function(Constants){    
+    "ProyectoFinal/ProyectoFinal/util/Constants"
+
+], function(Controller, Constants){    
     return {
-        formatPrice: function (valor) {
-            valor = parseInt(valor);
-            return valor/160;
+        formatPrice: function (iValor) {
+            iValor = parseInt(iValor) + Constants.TEXT.usd;
             },
             
         formatStock: function(nUnit) {
+            nUnit = parseFloat(nUnit)
             if(nUnit===0) {
                 return "Out of Stock";
-            } else {
-                if(nUnit <= 20) {
-                    return "Little Stock"
-            } else if (nUnit > 20) {
-                return "In Stock"
-            } else {
-                return "Error"
-            }
-            }
+            } else if(nUnit <= 20) {
+                    return "Little Stock";
+                } else {
+                return "In Stock";
+                }
+            },
+
+        formatStockColor: function(nUnit) {
+            nUnit = parseFloat(nUnit)
+            if(nUnit===0) {
+                return "Error";
+                } else if(nUnit <= 20) {
+                    return "Warning";
+                } else {
+                    return "Success";
+            }  
         },
     }
-});
+},true);

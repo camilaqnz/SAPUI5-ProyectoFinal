@@ -16,29 +16,29 @@ function (Constants) {
             return this.promisizer(oRequest);
         },
 
-        getProductID: function(oIdSeleccionado) {
+        getProductID: function(oIdSelect) {
             let oRequest = this.getRequest({
                 endPoint: Constants.REQUEST.endPoint.northwind,
                 method: Constants.REQUEST.method.GET,
-                entity: Constants.REQUEST.entity.products + "(" + oIdSeleccionado + ")"
+                entity: Constants.REQUEST.entity.products + "(" + oIdSelect + ")"
             });
             return this.promisizer(oRequest);
         },
 
-        getCategory: function(categoryID) {
+        getCategory: function(oIdSelect) {
             let oRequest = this.getRequest({
                 endPoint: Constants.REQUEST.endPoint.northwind,
                 method: Constants.REQUEST.method.GET,
-                entity: Constants.REQUEST.entity.products + "(" + categoryID + ")"+ Constants.REQUEST.category
+                entity: Constants.REQUEST.entity.products + "(" + oIdSelect + ")"+ Constants.REQUEST.category
             });
             return this.promisizer(oRequest);
         },
 
-        getSupplier: function(supplierID) {
+        getSupplier: function(oIdSelect) {
             let oRequest = this.getRequest({
                 endPoint: Constants.REQUEST.endPoint.northwind,
                 method: Constants.REQUEST.method.GET,
-                entity: Constants.REQUEST.entity.products + "(" + supplierID + ")"+ Constants.REQUEST.suppliers
+                entity: Constants.REQUEST.entity.products + "(" + oIdSelect + ")" + Constants.REQUEST.supplier
             });
             return this.promisizer(oRequest);
         },

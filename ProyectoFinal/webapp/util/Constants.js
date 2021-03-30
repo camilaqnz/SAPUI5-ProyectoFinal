@@ -16,7 +16,7 @@ sap.ui.define([], function(){
                 products: "/v3/northwind/northwind.svc/Products",
             },
             category:"/Category",
-            suppliers:"/Supplier"
+            supplier:"/Supplier"
         },
 
         FILTER:{
@@ -49,7 +49,8 @@ sap.ui.define([], function(){
         TEXT:{
             message: "Copiado en portapapeles",
             delete: "¿Desea borrar esta información?",
-            deleted: "Borrado"
+            deleted: "Borrado",
+            usd: "USD"
         }
     };
 }, true);

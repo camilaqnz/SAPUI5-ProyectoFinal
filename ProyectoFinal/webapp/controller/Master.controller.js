@@ -5,18 +5,17 @@ sap.ui.define([
         "ProyectoFinal/ProyectoFinal/util/Constants",
         "sap/ui/model/Filter",
         "sap/ui/model/FilterOperator",
-        "ProyectoFinal/ProyectoFinal/util/Commons",
         "ProyectoFinal/ProyectoFinal/util/Formatter"
 	],
 	/**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-	function (Controller, Services, JSONModel, Constants, Filter, FilterOperator, Commons, Formatter) {
+	function (Controller, Services, JSONModel, Constants, Filter, FilterOperator, Formatter) {
 		"use strict";
 
 		return Controller.extend("ProyectoFinal.ProyectoFinal.controller.Master", {
+            Formatter:Formatter,
 			onInit: function () {
-                Formatter:Formatter;
                 this.loadProductsModel();
 
                 this.getOwnerComponent().getRouter().getRoute(Constants.routes.main).attachPatternMatched(this.onRouteMatched, this);
@@ -29,39 +28,26 @@ sap.ui.define([
                 var oModelProducts = new JSONModel();
                 oModelProducts.setData(oData);
                 oComponent.setModel(oModelProducts, Constants.MODEL.oModelProducts);
-
-                //CARGA DE CATEGORY & SUPPLIERS
-
-                let oProductsModelFirst = this.getOwnerComponent().getModel(Constants.MODEL.oModelProducts);
-                let oSelectedProduct = oProductsModelFirst.getProperty("/value/0");
-
-                var oModelSelected = new JSONModel();
-                oModelSelected.setData(oSelectedProduct);
-
-                var categoryID = oSelectedProduct.CategoryID;
-                var supplierID = oSelectedProduct.SupplierID;
-
-                oComponent.setModel(oModelSelected, Constants.MODEL.oSelectedProduct);
-
-                this.loadCategoryModel(categoryID);
-                this.loadSupplierModel(supplierID);
             },
 
-            loadCategoryModel: async function(categoryID){
+            loadCategoryModel: async function(oIdSelect){
                 var oComponent = this.getOwnerComponent();
-                let oResponse = await Services.getCategory(categoryID);
+                let oResponse = await Services.getCategory(oIdSelect);
                 let oData = oResponse[0];
                 var oModelCategory = new JSONModel();
                 oModelCategory.setData(oData);
+
                 oComponent.setModel(oModelCategory, Constants.MODEL.oModelCategory);
+                console.log(oModelCategory);
             },
 
-            loadSupplierModel: async function(supplierID){
+            loadSupplierModel: async function(oIdSelect){
                 var oComponent = this.getOwnerComponent();
-                let oResponse = await Services.getSupplier(supplierID);
+                let oResponse = await Services.getSupplier(oIdSelect);
                 let oData = oResponse[0];
                 var oModelSupplier = new JSONModel();
                 oModelSupplier.setData(oData);
+
                 oComponent.setModel(oModelSupplier, Constants.MODEL.oModelSupplier);
             },
 
@@ -73,15 +59,18 @@ sap.ui.define([
                 let oItem = oEvent.getSource().getSelectedItem().getBindingContext(Constants.MODEL.oModelProducts);
                 let oModel = this.getOwnerComponent().getModel(Constants.MODEL.oModelProducts);
                 let oItemSeleccionado = oModel.getProperty(oItem.getPath());
-                let oIdSeleccionado = oItemSeleccionado.ProductID;
+                let oIdSelect = oItemSeleccionado.ProductID;
 
-                let oResponse = await Services.getProductID(oIdSeleccionado);                
+                let oResponse = await Services.getProductID(oIdSelect);                
                 let oSelectedProduct = oResponse[0];
                 let oModelSelectedProduct = new JSONModel();
                 oModelSelectedProduct.setData(oSelectedProduct);
                 
                 let oComponent = this.getOwnerComponent();
                 oComponent.setModel(oModelSelectedProduct, Constants.MODEL.oProductSelectId);
+
+                this.loadCategoryModel(oIdSelect);
+                this.loadSupplierModel(oIdSelect);
 
                 this.getOwnerComponent().getRouter().navTo(Constants.routes.detail);
             },

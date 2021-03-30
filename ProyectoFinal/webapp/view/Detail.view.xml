@@ -9,16 +9,16 @@ displayBlock="true">
             <ObjectHeader
                 title="{ProductSelectIdModel>/ProductName}"
                 number="{
-                    parts:[{path:'ProductSelectIdModel>/UnitPrice'}, {path:'CurrencyCode'}],
+                    parts:[{path:'ProductSelectIdModel>/UnitPrice', formatter: '.Formatter.formatPrice'}, {path:'CurrencyCode'}],
                     type: 'sap.ui.model.type.Currency',
                     formatOptions: {showMeasure: true}
                     }"
                 numberUnit="{i18n>USD}"
                 class="sapUiResponsivePadding--header">
                 <statuses>
-                    <ObjectStatus
-                        id="isStockStatus"
-                        text="{ProductSelectIdModel>/UnitsInStock}"/>
+                <ObjectStatus
+                    text="{path: 'ProductSelectIdModel>/UnitsInStock', formatter: '.Formatter.formatStock'}"
+                    state="{path: 'ProductSelectIdModel>/UnitsInStock', formatter: '.Formatter.formatStockColor'}" />
                 </statuses>
                 <ObjectAttribute text="{CategoryModel>/CategoryName}"/>
             </ObjectHeader>
